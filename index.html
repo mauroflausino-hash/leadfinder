@@ -49,7 +49,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;back
 .h-eyebrow::before{content:'';display:inline-block;width:26px;height:2px;background:var(--vm-orange);border-radius:2px}
 .hero h1{font-family:var(--f-d);font-size:clamp(2.6rem,6vw,4.6rem);line-height:.95;letter-spacing:1px;margin-bottom:16px}
 .h-outline{-webkit-text-stroke:1.5px rgba(255,255,255,.2);color:transparent;display:block}
-.h-accent{color:var(--vm-orange);display:block}
+.h-accent{color:var(--vm-orange);display:block;margin-top:2px}
+.h-solid{display:block}
 .h-desc{font-size:15px;font-weight:300;color:var(--vm-gold);max-width:450px;line-height:1.75}
 .hv{width:190px;flex-shrink:0}
 .hf{width:175px;height:250px;border:1px solid var(--border-o);border-radius:var(--r3);background:var(--card);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
@@ -268,7 +269,7 @@ footer{border-top:1px solid var(--border);padding:26px 0 34px;display:flex;flex-
   <section class="hero">
     <div>
       <div class="h-eyebrow">Prospecção Inteligente</div>
-      <h1><span class="h-outline">ENCONTRE</span><span class="h-accent">CLIENTES</span></h1>
+      <h1><span class="h-outline">ENCONTRE</span><br><span class="h-accent">CLIENTES</span></h1>
       <p class="h-desc">Resultados instantâneos. Todas as empresas do nicho com dados completos, Instagram vinculado via Google Meu Negócio e mensagem personalizada pronta.</p>
     </div>
     <div class="hv">

@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LEADFINDER — Vieira Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --vm-orange:#FF6B00;--vm-orange-lt:#FF8C35;--vm-orange-dk:#CC5500;--vm-gold:#FFB347;
+  --bg:#0C0C0E;--bg2:#111115;--surface:#18181F;--card:#1E1E28;
+  --border:rgba(255,255,255,.07);--border-o:rgba(255,107,0,.28);
+  --text:#F5F5F7;--text-2:#FF9955;--text-3:#CC6622;
+  --hot:#FF4455;--mid:#FF9F1C;--cold:#00D9A3;
+  --f-d:'Bebas Neue',sans-serif;--f-b:'Outfit',sans-serif;
+  --r1:8px;--r2:14px;--r3:20px;--r4:28px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-b);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+/* Force all inputs/selects/textareas to show dark text regardless of host site CSS */
+input,select,textarea{color:#111 !important;-webkit-text-fill-color:#111 !important;background-color:#fff !important}
+input::placeholder,textarea::placeholder{color:#888 !important;opacity:1 !important}
+.amb{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.ab{position:absolute;border-radius:50%;filter:blur(150px)}
+.ab1{width:700px;height:700px;background:#FF6B00;top:-280px;left:-180px;opacity:.15}
+.ab2{width:500px;height:500px;background:#FF4400;bottom:-180px;right:-120px;opacity:.12}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px)}
+.page{position:relative;z-index:2;background:var(--bg);min-height:100vh}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* TOPBAR */
+.topbar{display:flex;align-items:center;padding:22px 0;border-bottom:1px solid var(--border);gap:14px;animation:fadeD .5s ease both}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.b-icon{width:44px;height:44px;background:var(--vm-orange);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;box-shadow:0 0 0 1px rgba(255,107,0,.4),0 8px 28px rgba(255,107,0,.35)}
+.b-name{font-family:var(--f-d);font-size:22px;letter-spacing:2.5px;line-height:1}
+.b-name em{color:var(--vm-orange);font-style:normal}
+.b-sub{font-size:10px;font-weight:500;color:var(--vm-orange);letter-spacing:2.5px;text-transform:uppercase;margin-top:2px}
+.t-right{margin-left:auto;display:flex;align-items:center;gap:9px}
+.badge-pill{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:5px 12px;border-radius:30px;background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.25);color:var(--vm-orange)}
+.badge-by{font-size:10px;font-weight:500;color:var(--text-3);padding:5px 12px;border:1px solid var(--border);border-radius:30px}
+.badge-by strong{color:var(--text-2);font-weight:600}
+
+/* HERO */
+.hero{padding:56px 0 40px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;animation:fadeU .6s .1s ease both}
+@media(max-width:680px){.hero{grid-template-columns:1fr}.hv{display:none}}
+.h-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;color:var(--vm-orange);margin-bottom:14px}
+.h-eyebrow::before{content:'';display:inline-block;width:26px;height:2px;background:var(--vm-orange);border-radius:2px}
+.hero h1{font-family:var(--f-d);font-size:clamp(2.6rem,6vw,4.6rem);line-height:.95;letter-spacing:1px;margin-bottom:16px}
+.h-outline{-webkit-text-stroke:1.5px rgba(255,255,255,.2);color:transparent;display:block}
+.h-accent{color:var(--vm-orange);display:block}
+.h-desc{font-size:15px;font-weight:300;color:var(--vm-gold);max-width:450px;line-height:1.75}
+.hv{width:190px;flex-shrink:0}
+.hf{width:175px;height:250px;border:1px solid var(--border-o);border-radius:var(--r3);background:var(--card);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.hf::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,107,0,.06),transparent 65%)}
+.hf-dots{position:absolute;top:12px;left:12px;display:flex;gap:4px}
+.hf-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.12)}
+.hf-dots span:first-child{background:var(--vm-orange);opacity:.8}
+.hf-ico{font-size:36px}
+.hf-bars{display:flex;flex-direction:column;gap:6px;padding:0 20px;width:100%}
+.hf-bar{height:3px;border-radius:2px;background:linear-gradient(90deg,var(--vm-orange),transparent);opacity:.35}
+.hf-bar:nth-child(2){width:70%;opacity:.2}.hf-bar:nth-child(3){width:85%;opacity:.18}
+.hf-tag{position:absolute;bottom:0;left:0;right:0;background:var(--vm-orange);font-family:var(--f-d);font-size:13px;letter-spacing:2.5px;color:#000;text-align:center;padding:8px}
+
+/* RULE */
+.rule{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.rule-lbl{font-family:var(--f-d);font-size:12px;letter-spacing:3px;color:var(--vm-orange-lt);white-space:nowrap}
+.rule::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* SEARCH CARD */
+.sc{background:var(--card);border:1px solid var(--border);border-radius:var(--r4);padding:28px 32px 26px;margin-bottom:40px;position:relative;overflow:hidden;animation:fadeU .6s .2s ease both}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--vm-orange) 35%,var(--vm-orange-lt) 65%,transparent)}
+.sc::after{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle at top right,rgba(255,107,0,.07),transparent 70%);pointer-events:none}
+.sc-label{font-family:var(--f-d);font-size:15px;letter-spacing:2.5px;color:var(--text-3);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.sc-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border-o),transparent)}
+.sf-profile{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+@media(max-width:580px){.sf-profile{grid-template-columns:1fr}}
+.sf{display:grid;grid-template-columns:1fr 1fr 1fr 150px;gap:12px;margin-bottom:16px}
+@media(max-width:700px){.sf{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.sf{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px}
+.f-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--vm-orange)}
+.f-lbl em{font-style:normal;color:var(--vm-orange)}
+.f-inp,.f-sel{background:#fff;border:1.5px solid #d0d0d8;border-radius:var(--r2);color:#111 !important;-webkit-text-fill-color:#111 !important;font-family:var(--f-b);font-size:14px;padding:11px 14px;outline:none;appearance:none;-webkit-appearance:none;transition:border-color .2s,box-shadow .2s}
+.f-inp::placeholder{color:#999 !important;opacity:1 !important}
+.f-inp:focus,.f-sel:focus{border-color:var(--vm-orange) !important;box-shadow:0 0 0 3px rgba(255,107,0,.15) !important;outline:none}
+.sel-w{position:relative}
+.sel-w::after{content:'▾';position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--text-3);font-size:11px}
+.sc-foot{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.btn-search{flex:1;min-width:180px;background:linear-gradient(135deg,var(--vm-orange),var(--vm-orange-lt));border:none;border-radius:var(--r2);color:#fff;font-family:var(--f-d);font-size:18px;letter-spacing:2px;padding:14px 28px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 0 var(--vm-orange-dk),0 8px 28px rgba(255,107,0,.28);position:relative;overflow:hidden}
+.btn-search::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.1),transparent 50%);pointer-events:none}
+.btn-search:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--vm-orange-dk),0 14px 36px rgba(255,107,0,.4)}
+.btn-search:active{transform:translateY(1px);box-shadow:0 2px 0 var(--vm-orange-dk)}
+.btn-search:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.s-hint{font-size:11px;color:var(--vm-orange-dk)}
+.spinner{width:15px;height:15px;border:2px solid rgba(255,255,255,.25);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* PROGRESS */
+.prog-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:16px 20px;margin-bottom:28px;animation:fadeU .3s ease both}
+.prog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:12px}
+.prog-msg{color:var(--vm-gold)}
+.prog-count{color:var(--vm-orange-lt);font-weight:700;font-family:var(--f-d);font-size:16px;letter-spacing:1px}
+.prog-bar-bg{height:3px;background:var(--bg2);border-radius:2px;overflow:hidden}
+.prog-bar-fill{height:100%;background:linear-gradient(90deg,var(--vm-orange),var(--vm-orange-lt));border-radius:2px;transition:width .3s ease}
+.prog-steps{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap}
+.prog-step{font-size:11px;display:flex;align-items:center;gap:5px;color:var(--text-3)}
+.prog-step.done{color:var(--cold)}
+.prog-step.active{color:var(--vm-orange)}
+.step-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.step-spin{width:8px;height:8px;border:1.5px solid rgba(255,107,0,.3);border-top-color:var(--vm-orange);border-radius:50%;animation:spin .6s linear infinite;flex-shrink:0}
+
+/* RESULTS */
+.rh{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:18px;animation:fadeU .4s ease both}
+.rh-title{font-family:var(--f-d);font-size:24px;letter-spacing:1px;color:var(--text)}
+.rh-title span{color:var(--vm-orange)}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;animation:fadeU .4s .04s ease both}
+.s-chip{display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:30px;font-size:12px;font-weight:500;border:1px solid;cursor:pointer;transition:.15s}
+.s-chip:hover{opacity:.85}
+.s-chip.hot{background:rgba(255,68,85,.07);border-color:rgba(255,68,85,.2);color:var(--hot)}
+.s-chip.mid{background:rgba(255,159,28,.07);border-color:rgba(255,159,28,.2);color:var(--mid)}
+.s-chip.cold{background:rgba(0,217,163,.07);border-color:rgba(0,217,163,.2);color:var(--cold)}
+.s-num{font-family:var(--f-d);font-size:18px;line-height:1}
+.filter-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px;animation:fadeU .4s .07s ease both}
+.fp{padding:6px 14px;border-radius:30px;font-size:12px;font-weight:600;letter-spacing:.4px;border:1px solid var(--border);background:transparent;color:var(--text-3);cursor:pointer;transition:.15s;font-family:var(--f-b)}
+.fp:hover{border-color:var(--vm-orange);color:var(--vm-orange)}
+.fp.active{background:var(--vm-orange);border-color:var(--vm-orange);color:#fff;box-shadow:0 3px 12px rgba(255,107,0,.3)}
+
+/* LEADS GRID */
+.lg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:28px}
+
+/* LEAD CARD */
+.lc{background:var(--card);border:1px solid var(--border);border-radius:var(--r3);overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s;animation:cardIn .35s ease both}
+.lc:hover{transform:translateY(-4px);box-shadow:0 16px 50px rgba(0,0,0,.5);border-color:rgba(255,107,0,.16)}
+.lc-bar{height:3px}
+.lc.hot .lc-bar{background:linear-gradient(90deg,var(--hot),#ff8855)}
+.lc.mid .lc-bar{background:linear-gradient(90deg,var(--mid),#ffcc44)}
+.lc.cold .lc-bar{background:linear-gradient(90deg,var(--cold),#00aaff)}
+.li{padding:22px 20px 18px}
+.ct{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:11px}
+.cn{font-weight:700;font-size:14px;line-height:1.3;flex:1;color:var(--text)}
+.lb{font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:30px;flex-shrink:0}
+.lb.hot{background:rgba(255,68,85,.1);color:var(--hot);border:1px solid rgba(255,68,85,.22)}
+.lb.mid{background:rgba(255,159,28,.1);color:var(--mid);border:1px solid rgba(255,159,28,.22)}
+.lb.cold{background:rgba(0,217,163,.1);color:var(--cold);border:1px solid rgba(0,217,163,.22)}
+.oa{display:flex;align-items:center;gap:6px;background:rgba(255,107,0,.07);border:1px solid rgba(255,107,0,.17);border-radius:var(--r1);padding:6px 10px;font-size:11px;font-weight:600;color:var(--vm-gold);margin-bottom:10px}
+.cm{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.mi{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--vm-orange-lt)}
+.mi a{color:var(--vm-orange-lt);text-decoration:none;transition:color .15s}
+.mi a:hover{color:#fff}
+.mico{width:18px;height:18px;border-radius:4px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0}
+.mtxt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;font-size:11px}
+.mem{opacity:.35;color:var(--text-3)}
+/* detail-loading skeleton */
+.skel{height:10px;border-radius:3px;background:linear-gradient(90deg,var(--surface) 25%,rgba(255,107,0,.08) 50%,var(--surface) 75%);background-size:200% 100%;animation:shimmer 1.2s infinite;width:70%}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+/* ig status */
+.ig-spin{width:9px;height:9px;border:1.5px solid rgba(225,48,108,.3);border-top-color:#e1306c;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+.ig-found{color:#e1306c!important}
+.cr{display:flex;align-items:center;gap:6px;margin-bottom:10px}
+.stars{font-size:10px;color:var(--mid)}
+.rn{font-size:12px;font-weight:600;color:var(--vm-orange)}
+.rc{font-size:11px;color:var(--vm-gold)}
+.ca{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:7px}
+.cb{border:none;border-radius:var(--r1);padding:8px 5px;font-family:var(--f-b);font-size:11px;font-weight:600;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;gap:3px}
+.cw{background:rgba(37,211,102,.09);color:#25d366;border:1px solid rgba(37,211,102,.18)}
+.wa-full{width:100%;justify-content:center;margin-bottom:8px;padding:10px;font-size:13px;font-weight:700}
+.cw:hover{background:rgba(37,211,102,.2)}
+.ci{background:rgba(225,48,108,.09);color:#e1306c;border:1px solid rgba(225,48,108,.18)}
+.ci:hover{background:rgba(225,48,108,.2)}
+.cs{background:var(--surface);color:var(--text-3);border:1px solid var(--border)}
+.cs:hover{border-color:var(--vm-orange);color:var(--vm-orange)}
+.cs.saved{background:rgba(0,217,163,.07);color:var(--cold);border-color:rgba(0,217,163,.22)}
+.cmsg{width:100%;background:linear-gradient(135deg,rgba(255,107,0,.1),rgba(255,107,0,.04));color:var(--vm-orange);border:1px solid var(--border-o);border-radius:var(--r1);padding:9px;font-family:var(--f-b);font-size:12px;font-weight:700;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;gap:5px}
+.cmsg:hover{background:rgba(255,107,0,.16)}
+
+/* PAGINATION */
+.pag{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:48px;flex-wrap:wrap}
+.pag-info{font-size:12px;color:var(--vm-gold);margin:0 8px}
+.pag-info strong{color:var(--text-2)}
+.pb{width:34px;height:34px;border-radius:var(--r1);border:1px solid var(--border);background:var(--surface);color:var(--text-3);font-family:var(--f-b);font-size:13px;font-weight:600;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center}
+.pb:hover:not(:disabled){border-color:var(--vm-orange);color:var(--vm-orange)}
+.pb:disabled{opacity:.25;cursor:not-allowed}
+.pb.active{background:var(--vm-orange);border-color:var(--vm-orange);color:#fff;box-shadow:0 3px 10px rgba(255,107,0,.3)}
+.pa{width:34px;height:34px;border-radius:var(--r1);border:1px solid var(--border);background:var(--surface);color:var(--text-2);font-size:16px;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center}
+.pa:hover:not(:disabled){border-color:var(--vm-orange);color:var(--vm-orange)}
+.pa:disabled{opacity:.2;cursor:not-allowed}
+
+/* SAVED */
+.ss{margin-bottom:56px}
+.sh{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.st{font-family:var(--f-d);font-size:24px;letter-spacing:1px}
+.sc2{background:var(--vm-orange);color:#fff;font-size:11px;font-weight:800;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.btn-clr{margin-left:auto;background:none;border:1px solid var(--border);color:var(--text-3);border-radius:var(--r1);padding:5px 11px;font-family:var(--f-b);font-size:11px;cursor:pointer;transition:.15s}
+.btn-clr:hover{border-color:var(--hot);color:var(--hot)}
+
+/* EMPTY */
+.es{text-align:center;padding:60px 24px;border:1px dashed rgba(255,107,0,.14);border-radius:var(--r4);background:rgba(255,107,0,.02)}
+.es-ico{font-size:48px;margin-bottom:14px;display:block}
+.es-t{font-family:var(--f-d);font-size:22px;letter-spacing:1px;margin-bottom:8px;color:var(--text-2)}
+.es-d{font-size:13px;color:var(--text-3);max-width:300px;margin:0 auto}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.82);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s}
+.modal-bg.open{opacity:1;pointer-events:all}
+.modal{background:var(--card);border:1px solid var(--border);border-top:1px solid rgba(255,107,0,.4);border-radius:var(--r4);max-width:540px;width:100%;transform:translateY(20px) scale(.97);transition:transform .3s ease;max-height:92vh;overflow:hidden;display:flex;flex-direction:column}
+.modal-bg.open .modal{transform:translateY(0) scale(1)}
+.mh{padding:22px 26px 0;display:flex;align-items:center;gap:10px}
+.mh-ico{width:34px;height:34px;background:rgba(255,107,0,.1);border:1px solid var(--border-o);border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:15px}
+.mh h3{font-family:var(--f-d);font-size:18px;letter-spacing:1.5px;flex:1}
+.m-close{width:30px;height:30px;border-radius:var(--r1);background:var(--surface);border:1px solid var(--border);color:var(--text-3);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.15s}
+.m-close:hover{border-color:var(--vm-orange);color:var(--text)}
+.mb{padding:18px 26px 26px;overflow-y:auto}
+.mf{font-size:12px;color:var(--text-3);margin-bottom:10px}
+.mf strong{color:var(--vm-orange)}
+.mta{width:100%;background:#fff;border:1.5px solid #d0d0d8;border-radius:var(--r2);color:#111 !important;-webkit-text-fill-color:#111 !important;font-family:var(--f-b);font-size:13px;line-height:1.7;padding:14px;resize:vertical;min-height:170px;outline:none;transition:.2s;margin-bottom:14px}
+.mta:focus{border-color:var(--vm-orange);box-shadow:0 0 0 3px rgba(255,107,0,.1)}
+.ma{display:flex;gap:10px}
+.btn-copy{flex:1;background:var(--surface);border:1px solid var(--border);color:var(--text-2);border-radius:var(--r2);padding:12px;font-family:var(--f-b);font-size:13px;font-weight:600;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-copy:hover{border-color:var(--vm-orange);color:var(--vm-orange)}
+.btn-copy.done{border-color:var(--cold);color:var(--cold)}
+.btn-wam{flex:1;background:rgba(37,211,102,.09);border:1px solid rgba(37,211,102,.22);color:#25d366;border-radius:var(--r2);padding:12px;font-family:var(--f-b);font-size:13px;font-weight:600;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-wam:hover{background:rgba(37,211,102,.2)}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;z-index:200;background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:11px 16px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px;transform:translateY(64px);opacity:0;transition:.3s cubic-bezier(.34,1.56,.64,1);pointer-events:none;box-shadow:0 12px 40px rgba(0,0,0,.5);max-width:300px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.ok{border-color:rgba(0,217,163,.28)}.toast.ok .td{background:var(--cold)}
+.toast.warn{border-color:var(--border-o)}.toast.warn .td{background:var(--vm-orange)}
+.td{width:7px;height:7px;border-radius:50%;background:var(--text-3);flex-shrink:0}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:26px 0 34px;display:flex;flex-direction:column;align-items:center;gap:9px}
+.ft{font-family:var(--f-d);font-size:13px;letter-spacing:3px;color:var(--text-3)}
+.ft em{color:var(--vm-orange);font-style:normal}
+.fl{display:flex;gap:20px;font-size:11px}
+.fl a{color:var(--text-3);text-decoration:none;transition:.15s}
+.fl a:hover{color:var(--vm-orange)}
+
+/* ANIMATIONS */
+@keyframes fadeD{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeU{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cardIn{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.lg .lc:nth-child(n){animation-delay:calc(var(--i,0) * 40ms)}
+
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--vm-orange)}
+@media(max-width:480px){.t-right .badge-by{display:none}.sc{padding:20px 16px}.mh,.mb{padding-left:18px;padding-right:18px}}
+</style>
+</head>
+<body>
+<div class="amb"><div class="ab ab1"></div><div class="ab ab2"></div></div>
+<div class="page"><div class="wrap">
+
+  <header class="topbar">
+    <a class="brand" href="#">
+      <div class="b-icon">🎬</div>
+      <div><div class="b-name">LEAD<em>FINDER</em></div><div class="b-sub">Vieira Marketing</div></div>
+    </a>
+    <div class="t-right">
+      <div class="badge-pill">v3.0</div>
+      <div class="badge-by">by <strong>Vieira Marketing</strong></div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="h-eyebrow">Prospecção Inteligente</div>
+      <h1><span class="h-outline">ENCONTRE</span><span class="h-accent">CLIENTES</span></h1>
+      <p class="h-desc">Resultados instantâneos. Todas as empresas do nicho com dados completos, Instagram vinculado via Google Meu Negócio e mensagem personalizada pronta.</p>
+    </div>
+    <div class="hv">
+      <div class="hf">
+        <div class="hf-dots"><span></span><span></span><span></span></div>
+        <div class="hf-ico">📹</div>
+        <div class="hf-bars"><div class="hf-bar"></div><div class="hf-bar"></div><div class="hf-bar"></div></div>
+        <div class="hf-tag">LEADS</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"><div class="rule-lbl">Seus Dados + Busca</div></div>
+  <div class="sc">
+    <div class="sc-label">👤 IDENTIFICAÇÃO</div>
+    <div class="sf-profile">
+      <div class="field">
+        <div class="f-lbl">Seu Nome <em>*</em></div>
+        <input type="text" class="f-inp" id="userName" placeholder="Ex: João Silva"/>
+      </div>
+      <div class="field">
+        <div class="f-lbl">Sua Empresa <em>*</em></div>
+        <input type="text" class="f-inp" id="userCompany" placeholder="Ex: Agência de Marketing, Produtora de Vídeo..."/>
+      </div>
+    </div>
+    <div class="sc-label">🔍 BUSCAR LEADS</div>
+    <div class="sf">
+      <div class="field">
+        <div class="f-lbl">Nicho</div>
+        <input type="text" class="f-inp" id="nicheInput" placeholder="restaurante, academia..."/>
+      </div>
+      <div class="field">
+        <div class="f-lbl">Cidade</div>
+        <input type="text" class="f-inp" id="cityInput" placeholder="São Paulo, Curitiba..."/>
+      </div>
+      <div class="field">
+        <div class="f-lbl">Estado</div>
+        <input type="text" class="f-inp" id="stateInput" placeholder="SP, PR..."/>
+      </div>
+      <div class="field">
+        <div class="f-lbl">Raio</div>
+        <div class="sel-w">
+          <select class="f-sel" id="radiusInput">
+            <option value="5000">5 km</option>
+            <option value="10000" selected>10 km</option>
+            <option value="20000">20 km</option>
+            <option value="50000">50 km</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="sc-foot">
+      <button class="btn-search" id="searchBtn" onclick="startSearch()">
+        <span id="btnIcon">⚡</span>
+        <span id="btnText">BUSCAR LEADS</span>
+        <div class="spinner" id="spinner"></div>
+      </button>
+      <div class="s-hint" id="modeHint">Resultados aparecem imediatamente • Instagram buscado em paralelo</div>
+    </div>
+  </div>
+
+  <div id="progressArea"></div>
+  <div id="resultsArea"></div>
+
+  <div class="ss" id="savedSection" style="display:none">
+    <div class="sh">
+      <div class="st">LEADS SALVOS</div>
+      <div class="sc2" id="savedCount">0</div>
+      <button class="btn-clr" onclick="clearSaved()">Limpar tudo</button>
+    </div>
+    <div class="lg" id="savedGrid"></div>
+  </div>
+
+</div>
+<footer>
+  <div class="ft">LEAD<em>FINDER</em></div>
+  <div class="fl">
+    <a href="https://www.vieiramarketing.com.br" target="_blank">Vieira Marketing</a>
+    <a href="#">Privacidade</a>
+  </div>
+</footer>
+</div>
+
+<div class="modal-bg" id="msgModal">
+  <div class="modal">
+    <div class="mh">
+      <div class="mh-ico">✍️</div>
+      <h3>MENSAGEM DE ABORDAGEM</h3>
+      <button class="m-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="mb">
+      <div class="mf">Para: <strong id="modalLeadName">—</strong></div>
+      <textarea class="mta" id="msgText" rows="9"></textarea>
+      <div class="ma">
+        <button class="btn-copy" id="copyBtn" onclick="copyMsg()">📋 Copiar</button>
+        <button class="btn-wam" onclick="sendWA()">📲 WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"><div class="td"></div><span id="toastMsg"></span></div>
+
+<script>
+// ─── CONFIG ───────────────────────────────
+const API_KEY   = 'AIzaSyARkQ9E3BDpoaAJG_0AFtmn_Z51E61GZC0';
+const PAGE_SIZE = 5;
+const IG_CONCUR = 8;
+// CORS proxy — routes fetch calls through a proxy server so the
+// Google REST APIs work from file:// and any origin
+// CORS proxy list — tried in order until one works.
+// All enforce HTTPS so Google APIs never get downgraded to HTTP.
+const PROXIES = [
+  url => ({ u: 'https://api.allorigins.win/get?url=' + encodeURIComponent(url), json: true  }),
+  url => ({ u: 'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(url), json: false }),
+  url => ({ u: 'https://corsproxy.io/?' + encodeURIComponent(url), json: false }),
+];
+
+
+// ─── STATE ────────────────────────────────
+let allLeads      = [];
+let filteredLeads = [];
+let savedLeads    = JSON.parse(localStorage.getItem('lfp_saved') || '[]');
+let activeFilter  = 'all';
+let currentPage   = 1;
+let mPhone = '', mName = '';
+let searching = false;
+
+// ─── API LAYER ──────────────────────────────────────────────────────────────
+// When running via "node server.js" → uses /api/* routes (no CORS, no proxy).
+// When opening file:// directly → tries proxies (may fail due to browser CORS).
+// SOLUTION: always use "node server.js" and open http://localhost:3000
+
+// True when running via any real server (localhost OR remote like Render)
+// False only when opening as file:// directly in browser
+const IS_LOCAL = location.protocol === 'https:' || ['localhost','127.0.0.1'].includes(location.hostname);
+
+// API base URL — same origin always (works on localhost:3000 and render.com)
+const API_BASE = location.protocol === 'file:' ? '' : '';
+
+function makeSignal(ms) {
+  const ctrl = new AbortController();
+  setTimeout(() => ctrl.abort(), ms);
+  return ctrl.signal;
+}
+
+async function localFetch(path) {
+  const r = await fetch(path, { signal: makeSignal(10000) });
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  return r.json();
+}
+
+async function proxyFetch(targetUrl) {
+  const safe = targetUrl.replace(/^http:\/\//, 'https://');
+  // direct (works on real https domains)
+  try {
+    const r = await fetch(safe, { signal: makeSignal(6000) });
+    if (r.ok) { const j = await r.json(); if (j && j.status) return j; }
+  } catch {}
+  // proxies
+  for (const mkP of PROXIES) {
+    try {
+      const { u, json } = mkP(safe);
+      const r = await fetch(u, { signal: makeSignal(11000) });
+      if (!r.ok) continue;
+      const txt = await r.text();
+      if (!txt || txt.length < 20) continue;
+      let d;
+      try { d = json ? JSON.parse(JSON.parse(txt).contents||'{}') : JSON.parse(txt); } catch {}
+      if (d && d.status) return d;
+    } catch {}
+  }
+  throw new Error('Não foi possível conectar. Execute via: node server.js → http://localhost:3000');
+}
+
+// Geocode: city → { lat, lng }
+async function geocode(city, state) {
+  const q = state ? `${city}, ${state}, Brasil` : `${city}, Brasil`;
+  let d;
+  if (IS_LOCAL) {
+    d = await localFetch('/api/geocode?address=' + encodeURIComponent(q));
+  } else {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(q)}&region=BR&key=${API_KEY}`;
+    d = await proxyFetch(url);
+  }
+  if (d.status !== 'OK' || !d.results[0]) throw new Error(`Cidade "${city}" não encontrada (${d.status})`);
+  return d.results[0].geometry.location;
+}
+
+// Text Search — returns results + next_page_token
+async function placesTextSearch(query, lat, lng, radius, pageToken) {
+  let d;
+  if (IS_LOCAL) {
+    let path = `/api/places?query=${encodeURIComponent(query)}&lat=${lat}&lng=${lng}&radius=${radius}`;
+    if (pageToken) path += '&pagetoken=' + encodeURIComponent(pageToken);
+    d = await localFetch(path);
+  } else {
+    let url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(query)}&location=${lat},${lng}&radius=${radius}&region=BR&language=pt-BR&key=${API_KEY}`;
+    if (pageToken) url += '&pagetoken=' + encodeURIComponent(pageToken);
+    d = await proxyFetch(url);
+  }
+  if (d.status !== 'OK' && d.status !== 'ZERO_RESULTS') throw new Error(`Places API: ${d.status} — ${d.error_message || ''}`);
+  return { results: d.results || [], nextToken: d.next_page_token || null };
+}
+
+// Place Details — website + phone from Google, then enrich from site HTML
+async function placeDetails(placeId) {
+  try {
+    let d;
+    if (IS_LOCAL) {
+      d = await localFetch('/api/details?place_id=' + encodeURIComponent(placeId));
+    } else {
+      const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=formatted_phone_number,website&key=${API_KEY}`;
+      d = await proxyFetch(url);
+    }
+    if (d.status === 'OK') return d.result;
+  } catch {}
+  return null;
+}
+
+// Scrape website HTML — extract phone and instagram in one pass
+async function scrapeWebsite(websiteUrl) {
+  if (!websiteUrl) return { phone: null, instagram: null };
+  const safe = websiteUrl.replace(/^http:\/\//, 'https://');
+  let body = '';
+
+  if (IS_LOCAL) {
+    try {
+      const r = await localFetch('/api/scrape?url=' + encodeURIComponent(safe));
+      body = r.body || '';
+    } catch { return { phone: null, instagram: null }; }
+  } else {
+    const proxies = [
+      { u: 'https://api.allorigins.win/get?url=' + encodeURIComponent(safe), json: true },
+      { u: 'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(safe), json: false },
+      { u: 'https://corsproxy.io/?' + encodeURIComponent(safe), json: false },
+    ];
+    for (const { u, json } of proxies) {
+      try {
+        const r = await fetch(u, { signal: makeSignal(6000) });
+        if (!r.ok) continue;
+        body = json ? ((await r.json()).contents || '') : await r.text();
+        if (body.length > 200) break;
+      } catch {}
+    }
+  }
+
+  if (!body || body.length < 100) return { phone: null, instagram: null };
+
+  // Extract phone — Brazilian formats: (XX) XXXXX-XXXX or +55...
+  let phone = null;
+  const phoneRx = /(?:\+55[\s-]?)?(?:\(?0?([1-9]{2})\)?[\s-]?)?(?:9[\s-]?\d{4}|[2-9]\d{3})[\s-]?\d{4}/g;
+  const phoneMatch = body.match(phoneRx);
+  if (phoneMatch) {
+    // Clean and pick the first valid one
+    const cleaned = phoneMatch[0].replace(/[^\d+]/g, '');
+    if (cleaned.length >= 10) phone = phoneMatch[0].trim();
+  }
+
+  // Extract Instagram — link starting with instagram.com/
+  let instagram = null;
+  const igHandles = extractIGHandles(body, null);
+  if (igHandles.length > 0) instagram = igHandles[0];
+
+  return { phone, instagram };
+}
+
+// ─── FETCH ALL PLACES ─────────────────────
+async function fetchAllPlaces(niche, city, state, radius) {
+  const loc   = await geocode(city, state);
+  const query = `${niche} ${city}${state ? ' '+state : ''}`;
+
+  // Fetch first page and limit to top 15 ranked results
+  const { results: r1 } = await placesTextSearch(query, loc.lat, loc.lng, radius);
+  if (!r1.length) throw new Error('Nenhuma empresa encontrada. Tente outro nicho ou cidade.');
+
+  const top15 = r1.slice(0, 15);
+  allLeads = top15.map(p => buildLead(p, city, state, niche));
+  activeFilter = 'all'; currentPage = 1;
+  renderResults();
+  setLoading(false);
+  searching = false;
+  hideProgress();
+  showToast(allLeads.length + ' empresas encontradas! Buscando dados...', 'ok');
+  enrichLeads(city);
+}
+
+function buildLead(p, city, state, niche) {
+  const r  = p.rating || 0;
+  const rv = p.user_ratings_total || 0;
+  return {
+    id: p.place_id, name: p.name,
+    phone: null, website: null, websiteUrl: null,
+    instagram: null, igStatus: 'pending',
+    rating: r, reviews: rv,
+    hasWebsite: false, hasIG: false,
+    city, state, niche,
+    detailLoaded: false,
+    classification: classify(false, false, r, rv),
+    opportunity: true,
+  };
+}
+
+// ─── ENRICH ───────────────────────────────
+// Pipeline per lead (in parallel, pool of 6):
+//   Step 1 → Google Details API  → get website URL
+//   Step 2 → show site on card immediately
+//   Step 3 → scrape site HTML    → extract phone + instagram in ONE request
+//   Step 4 → update card with phone, then instagram
+async function enrichLeads(city) {
+  let igFound = 0;
+  const pool  = new Pool(6); // 6 leads enriched simultaneously
+
+  for (const lead of allLeads) {
+    pool.run(async () => {
+
+      // ── Step 1: Google Details → phone + website + Instagram from GMB ───
+      const d = await placeDetails(lead.id);
+      if (d) {
+        lead.phone      = d.formatted_phone_number || null;
+        lead.websiteUrl = d.website ? (d.website.startsWith('http') ? d.website : 'https://' + d.website) : null;
+        lead.website    = d.website ? d.website.replace(/^https?:\/\//,'').replace(/\/$/,'') : null;
+        lead.hasWebsite = !!d.website;
+        // Instagram directly from Google My Business "Perfis" tab via Places API (New)
+        if (d.instagram) {
+          lead.instagram   = d.instagram;
+          lead.igSource    = d.igSource || 'gmb';
+          lead.igStatus    = 'found';
+          lead.hasIG       = true;
+          lead.opportunity = false;
+        }
+        lead.detailLoaded = true;
+        lead.classification = classify(lead.hasWebsite, lead.hasIG, lead.rating, lead.reviews);
+      } else {
+        lead.detailLoaded = true;
+      }
+
+      // ── Step 2: show site (and phone if Google returned it) immediately ─
+      updateCardDetails(lead);
+
+      // ── Step 3: scrape website for phone (if missing) + instagram ───────
+      // Skip IG scraping if already found from Google My Business
+      if (lead.websiteUrl && !lead.hasIG) {
+        lead.igStatus = 'searching';
+        updateCardIG(lead);
+
+        const scraped = await scrapeWebsite(lead.websiteUrl);
+
+        // Phone: use Google's if available, otherwise use scraped
+        if (!lead.phone && scraped.phone) {
+          lead.phone = scraped.phone;
+          updateCardDetails(lead); // refresh phone
+        }
+
+        // Instagram from site HTML
+        lead.igStatus = scraped.instagram ? 'found' : 'none';
+        if (scraped.instagram) {
+          lead.instagram  = scraped.instagram;
+          lead.igSource   = 'site';
+          lead.hasIG      = true;
+          lead.opportunity = false;
+          lead.classification = classify(lead.hasWebsite, true, lead.rating, lead.reviews);
+          igFound++;
+        }
+        updateCardIG(lead);
+        updateStatsUI();
+      } else {
+        // No website — can't find IG
+        lead.igStatus = 'none';
+        updateCardIG(lead);
+      }
+
+      // Periodically re-render visible page to show data as it arrives
+      const done = allLeads.filter(l => l.detailLoaded).length;
+      if (done % 3 === 0) renderResults();
+    });
+  }
+
+  await pool.done();
+  hideProgress();
+  // Re-render so ALL pages show the enriched data (phone/site/IG)
+  renderResults();
+  updateStatsUI();
+  if (igFound > 0) {
+    showToast('📸 ' + igFound + ' Instagram encontrado' + (igFound > 1 ? 's' : '') + '!', 'ok');
+  } else {
+    showToast('Dados carregados! Nenhum Instagram encontrado nos sites.', 'warn');
+  }
+}
+
+// ─── CONCURRENCY POOL ─────────────────────
+class Pool {
+  constructor(limit) { this.limit = limit; this.running = 0; this.queue = []; this._res = null; this._p = 0; }
+  run(fn) {
+    this._p++;
+    const go = async () => {
+      this.running++;
+      try { await fn(); } finally {
+        this.running--; this._p--;
+        if (this.queue.length) this.queue.shift()();
+        else if (this._p === 0 && this._res) this._res();
+      }
+    };
+    this.running < this.limit ? go() : this.queue.push(go);
+  }
+  done() { return new Promise(r => { if (this._p === 0) r(); else this._res = r; }); }
+}
+
+
+// ─── CLASSIFY ─────────────────────────────
+function classify(ws, ig, r, rv) {
+  if (r >= 4.5 && rv > 150 && ig && ws) return 'cold';
+  let s = 0;
+  if (!ig) s += 3; if (!ws) s += 2; if (r < 3.5) s += 2; if (rv < 20) s += 1;
+  return s >= 4 ? 'hot' : s >= 2 ? 'mid' : 'cold';
+}
+
+// ─── MAIN SEARCH ──────────────────────────
+async function startSearch() {
+  if (searching) return;
+  const niche  = document.getElementById('nicheInput').value.trim();
+  const city   = document.getElementById('cityInput').value.trim();
+  const state  = document.getElementById('stateInput').value.trim();
+  const radius = document.getElementById('radiusInput').value;
+  if (!niche || !city) { showToast('Preencha nicho e cidade ⚠️', 'warn'); return; }
+
+  searching = true;
+  allLeads = []; filteredLeads = []; currentPage = 1;
+  setLoading(true);
+  document.getElementById('resultsArea').innerHTML = '';
+  setProgress(0, true, 'Buscando empresas...');
+
+  try {
+    await fetchAllPlaces(niche, city, state, radius);
+  } catch(err) {
+    hideProgress();
+    const msg = err.message || 'Erro desconhecido';
+    // If we already have leads on screen, don't overwrite with error — just show toast
+    if (allLeads.length > 0) {
+      showToast('⚠️ ' + msg, 'warn');
+    } else {
+      const isKey = msg.includes('REQUEST_DENIED') || msg.includes('INVALID_REQUEST') || msg.includes('API') || msg.includes('SSL');
+      document.getElementById('resultsArea').innerHTML =
+        '<div class="es"><span class="es-ico">' + (isKey?'🔑':'😕') + '</span>' +
+        '<div class="es-t">' + (isKey?'Erro na API Key':'Erro na busca') + '</div>' +
+        '<p class="es-d">' + msg + '</p>' +
+        (isKey ? '<p style="font-size:11px;color:var(--text-3);margin-top:10px">Verifique se <b>Geocoding API</b> e <b>Places API</b> estão ativas em console.cloud.google.com e se o faturamento está habilitado.</p>' : '') +
+        '</div>';
+    }
+    showToast(msg, 'warn');
+    setLoading(false);
+    searching = false;
+  }
+}
+
+// ─── RENDER ───────────────────────────────
+function renderResults() {
+  const area = document.getElementById('resultsArea');
+  if (!allLeads.length) return;
+  filteredLeads = activeFilter === 'all' ? allLeads : allLeads.filter(l => l.classification === activeFilter);
+  const hot  = allLeads.filter(l => l.classification === 'hot').length;
+  const mid  = allLeads.filter(l => l.classification === 'mid').length;
+  const cold = allLeads.filter(l => l.classification === 'cold').length;
+  const total = filteredLeads.length;
+  const pages = Math.ceil(total / PAGE_SIZE);
+  currentPage = Math.min(currentPage, Math.max(1, pages));
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const pageLeads = filteredLeads.slice(start, start + PAGE_SIZE);
+
+  area.innerHTML =
+    '<div class="rh"><div class="rh-title">' + allLeads.length + ' LEADS <span>ENCONTRADOS</span></div></div>' +
+    '<div class="stats">' +
+      '<div class="s-chip hot" onclick="setF(\'hot\')"><span class="s-num">' + hot + '</span>🔥 Quentes</div>' +
+      '<div class="s-chip mid" onclick="setF(\'mid\')"><span class="s-num">' + mid + '</span>⚡ Médios</div>' +
+      '<div class="s-chip cold" onclick="setF(\'cold\')"><span class="s-num">' + cold + '</span>❄️ Frios</div>' +
+    '</div>' +
+    '<div class="filter-bar">' +
+      '<button class="fp ' + (activeFilter==='all'?'active':'') + '" onclick="setF(\'all\')">Todos (' + allLeads.length + ')</button>' +
+      '<button class="fp ' + (activeFilter==='hot'?'active':'') + '" onclick="setF(\'hot\')">🔥 Quentes (' + hot + ')</button>' +
+      '<button class="fp ' + (activeFilter==='mid'?'active':'') + '" onclick="setF(\'mid\')">⚡ Médios (' + mid + ')</button>' +
+      '<button class="fp ' + (activeFilter==='cold'?'active':'') + '" onclick="setF(\'cold\')">❄️ Frios (' + cold + ')</button>' +
+    '</div>' +
+    '<div class="lg">' + pageLeads.map((l,i) => renderCard(l,i)).join('') + '</div>' +
+    renderPag(currentPage, pages, total, start);
+}
+
+function setF(f) {
+  activeFilter = f; currentPage = 1; renderResults();
+  window.scrollTo({ top: document.getElementById('resultsArea').offsetTop - 70, behavior: 'smooth' });
+}
+
+function renderPag(page, total, count, start) {
+  if (total <= 1) return '';
+  const end = Math.min(start + PAGE_SIZE, count);
+  let pages = [];
+  if (total <= 7) { pages = Array.from({length:total},(_,i)=>i+1); }
+  else {
+    pages.push(1);
+    if (page > 3) pages.push('…');
+    for (let p = Math.max(2,page-1); p <= Math.min(total-1,page+1); p++) pages.push(p);
+    if (page < total-2) pages.push('…');
+    pages.push(total);
+  }
+  return '<div class="pag">' +
+    '<button class="pa" onclick="goPage(' + (page-1) + ')"' + (page<=1?' disabled':'') + '>‹</button>' +
+    pages.map(p => p==='…'
+      ? '<span style="color:var(--text-3);padding:0 2px">…</span>'
+      : '<button class="pb ' + (p===page?'active':'') + '" onclick="goPage(' + p + ')">' + p + '</button>'
+    ).join('') +
+    '<button class="pa" onclick="goPage(' + (page+1) + ')"' + (page>=total?' disabled':'') + '>›</button>' +
+    '<span class="pag-info"><strong>' + (start+1) + '–' + end + '</strong> de <strong>' + count + '</strong></span>' +
+  '</div>';
+}
+
+function goPage(p) {
+  const tot = Math.ceil(filteredLeads.length / PAGE_SIZE);
+  if (p < 1 || p > tot) return;
+  currentPage = p; renderResults();
+  window.scrollTo({ top: document.getElementById('resultsArea').offsetTop - 70, behavior: 'smooth' });
+}
+
+// ─── CARD ─────────────────────────────────
+function renderCard(l, i) {
+  const sv  = savedLeads.some(s => s.id === l.id);
+  const bl  = {hot:'🔥 Quente',mid:'⚡ Médio',cold:'❄️ Frio'}[l.classification];
+  const st  = l.rating ? '★'.repeat(Math.min(5,Math.round(l.rating)))+'☆'.repeat(Math.max(0,5-Math.round(l.rating))) : '';
+
+  const phoneHtml = l.phone
+    ? '<div class="mi"><div class="mico">📞</div><span class="mtxt">' + e(l.phone) + '</span></div>'
+    : l.detailLoaded
+      ? '<div class="mi"><div class="mico">📞</div><span class="mtxt mem">Sem telefone</span></div>'
+      : '<div class="mi"><div class="mico">📞</div><div class="skel"></div></div>';
+
+  const siteHtml = l.website
+    ? '<div class="mi"><div class="mico">🌐</div><span class="mtxt"><a href="https://' + e(l.website) + '" target="_blank">' + e(l.website) + '</a></span></div>'
+    : l.detailLoaded
+      ? '<div class="mi"><div class="mico">🌐</div><span class="mtxt mem">Sem site</span></div>'
+      : '<div class="mi"><div class="mico">🌐</div><div class="skel"></div></div>';
+
+  const opp = (l.igStatus === 'none' && !l.hasIG)
+    ? '<div class="oa">💡 Sem Instagram no site — possível oportunidade</div>' : '';
+
+  const igBtnHtml = l.instagram
+    ? '<button class="cb ci" onclick="window.open(\'https://instagram.com/' + ea(l.instagram) + '\',\'_blank\')">📸 Instagram</button>'
+    : '<button class="cb ci" disabled style="opacity:.25;cursor:not-allowed">📸 —</button>';
+
+  const waBtnHtml = l.phone
+    ? '<button class="cb cw wa-full" onclick="openWA(\'' + ea(l.phone) + '\')">📲 Abrir WhatsApp</button>'
+    : '<button class="cb cw wa-full" disabled style="opacity:.25;cursor:not-allowed">📲 WhatsApp indisponível</button>';
+
+  return '<div class="lc ' + l.classification + '" id="card_' + l.id + '" style="--i:' + i + '">' +
+    '<div class="lc-bar"></div>' +
+    '<div class="li">' +
+      '<div class="ct"><div class="cn">' + e(l.name) + '</div><span class="lb ' + l.classification + '">' + bl + '</span></div>' +
+      opp +
+      '<div class="cm" id="cm_' + l.id + '">' + phoneHtml + siteHtml + igCellHtml(l) + '</div>' +
+      (l.rating ? '<div class="cr"><span class="stars">' + st + '</span><span class="rn">' + l.rating.toFixed(1) + '</span><span class="rc">(' + l.reviews + ' avaliações)</span></div>' : '') +
+      '<div id="wabtn_' + l.id + '">' + waBtnHtml + '</div>' +
+      '<div class="ca">' +
+        '<span id="igbtn_' + l.id + '">' + igBtnHtml + '</span>' +
+        '<button class="cb cs ' + (sv?'saved':'') + '" id="sv_' + l.id + '" onclick="toggleSave(\'' + l.id + '\')">' + (sv?'⭐':'☆ Salvar') + '</button>' +
+      '</div>' +
+      '<button class="cmsg" onclick="openModal(\'' + l.id + '\')">✍️ Gerar mensagem de abordagem</button>' +
+    '</div>' +
+  '</div>';
+}
+
+
+function igSourceBadge(src) {
+  if (src === 'gmb')  return '<span style="font-size:9px;background:rgba(66,133,244,.12);color:#4285f4;border:1px solid rgba(66,133,244,.25);border-radius:4px;padding:1px 5px;margin-left:5px;flex-shrink:0">✓ Google</span>';
+  if (src === 'site') return '<span style="font-size:9px;background:rgba(225,48,108,.12);color:#e1306c;border:1px solid rgba(225,48,108,.2);border-radius:4px;padding:1px 5px;margin-left:5px;flex-shrink:0">✓ site</span>';
+  return '';
+}
+
+function igCellHtml(l) {
+  if (l.igStatus === 'searching')
+    return '<div class="ig-cell mi" id="ig_' + l.id + '"><div class="mico">📸</div><div class="ig-spin"></div><span class="mtxt" style="font-size:10px;color:var(--text-3)">buscando...</span></div>';
+  if (l.instagram)
+    return '<div class="ig-cell mi" id="ig_' + l.id + '" style="flex-wrap:wrap"><div class="mico">📸</div><span class="mtxt ig-found"><a href="https://instagram.com/' + e(l.instagram) + '" target="_blank">@' + e(l.instagram) + '</a></span>' + igSourceBadge(l.igSource) + '</div>';
+  if (l.igStatus === 'none')
+    return '<div class="ig-cell mi" id="ig_' + l.id + '"><div class="mico">📸</div><span class="mtxt mem">Sem Instagram no site</span></div>';
+  return '<div class="ig-cell mi" id="ig_' + l.id + '"><div class="mico">📸</div><div class="skel"></div></div>';
+}
+
+function updateCardIG(lead) {
+  const cell = document.getElementById('ig_' + lead.id);
+  if (cell) { const t = document.createElement('div'); t.innerHTML = igCellHtml(lead); cell.replaceWith(t.firstChild); }
+  const btn = document.getElementById('igbtn_' + lead.id);
+  if (btn) btn.innerHTML = lead.instagram
+    ? '<button class="cb ci" onclick="window.open(\'https://instagram.com/' + ea(lead.instagram) + '\',\'_blank\')">📸 Instagram</button>'
+    : '<button class="cb ci" disabled style="opacity:.2;cursor:not-allowed">📸 —</button>';
+  const card = document.getElementById('card_' + lead.id);
+  if (card) {
+    card.className = 'lc ' + lead.classification;
+    const oaEl = card.querySelector('.oa');
+    if (lead.hasIG && oaEl) oaEl.remove();
+    const badge = card.querySelector('.lb');
+    if (badge) { badge.className = 'lb ' + lead.classification; badge.textContent = {hot:'🔥 Quente',mid:'⚡ Médio',cold:'❄️ Frio'}[lead.classification]; }
+  }
+}
+
+function updateCardDetails(lead) {
+  const cm = document.getElementById('cm_' + lead.id);
+  if (!cm) return;
+  const phoneHtml = lead.phone
+    ? '<div class="mi"><div class="mico">📞</div><span class="mtxt">' + e(lead.phone) + '</span></div>'
+    : '<div class="mi"><div class="mico">📞</div><span class="mtxt mem">Sem telefone</span></div>';
+  const siteHtml = lead.website
+    ? '<div class="mi"><div class="mico">🌐</div><span class="mtxt"><a href="https://' + e(lead.website) + '" target="_blank">' + e(lead.website) + '</a></span></div>'
+    : '<div class="mi"><div class="mico">🌐</div><span class="mtxt mem">Sem site</span></div>';
+  cm.innerHTML = phoneHtml + siteHtml + igCellHtml(lead);
+  // Update WA button
+  const waWrap = document.getElementById('wabtn_' + lead.id);
+  if (waWrap && lead.phone) {
+    waWrap.innerHTML = '<button class="cb cw wa-full" onclick="openWA(\'' + ea(lead.phone) + '\')">📲 Abrir WhatsApp</button>';
+  }
+}
+
+function updateStatsUI() {
+  const hot  = allLeads.filter(l => l.classification === 'hot').length;
+  const mid  = allLeads.filter(l => l.classification === 'mid').length;
+  const cold = allLeads.filter(l => l.classification === 'cold').length;
+  document.querySelectorAll('.s-chip.hot .s-num').forEach(el => el.textContent = hot);
+  document.querySelectorAll('.s-chip.mid .s-num').forEach(el => el.textContent = mid);
+  document.querySelectorAll('.s-chip.cold .s-num').forEach(el => el.textContent = cold);
+}
+
+// ─── PROGRESS ─────────────────────────────
+function setProgress(count, hasMore, msg) {
+  const pct = hasMore ? Math.min(85, (count/60)*85) : 100;
+  document.getElementById('progressArea').innerHTML =
+    '<div class="prog-wrap">' +
+    '<div class="prog-top"><span class="prog-msg">' + msg + '</span><span class="prog-count">' + count + ' empresas</span></div>' +
+    '<div class="prog-bar-bg"><div class="prog-bar-fill" style="width:' + pct + '%"></div></div>' +
+    '</div>';
+}
+function hideProgress() { document.getElementById('progressArea').innerHTML = ''; }
+
+// ─── SAVE ─────────────────────────────────
+function toggleSave(id) {
+  const lead = allLeads.find(x => x.id === id) || savedLeads.find(x => x.id === id);
+  if (!lead) return;
+  const i = savedLeads.findIndex(s => s.id === id);
+  if (i === -1) { savedLeads.push({...lead}); showToast('Lead salvo! ⭐', 'ok'); }
+  else { savedLeads.splice(i, 1); showToast('Lead removido', 'warn'); }
+  localStorage.setItem('lfp_saved', JSON.stringify(savedLeads));
+  const btn = document.getElementById('sv_' + id);
+  if (btn) { const s = savedLeads.some(x => x.id === id); btn.textContent = s ? '⭐' : '☆ Salvar'; btn.className = 'cb cs' + (s?' saved':''); }
+  renderSaved();
+}
+function clearSaved() { savedLeads = []; localStorage.removeItem('lfp_saved'); renderSaved(); showToast('Leads removidos', 'warn'); }
+function renderSaved() {
+  const sec = document.getElementById('savedSection');
+  const grid = document.getElementById('savedGrid');
+  const cnt  = document.getElementById('savedCount');
+  if (!savedLeads.length) { sec.style.display = 'none'; return; }
+  sec.style.display = 'block'; cnt.textContent = savedLeads.length;
+  grid.innerHTML = savedLeads.map((l,i) => renderCard(l,i)).join('');
+}
+
+// ─── MODAL ────────────────────────────────
+// ─── COMPANY TYPE DETECTOR ────────────────────────────────────────────────────
+// Detects what the user's own company does and adapts the pitch message.
+function detectUserCompanyContext(companyName) {
+  const n = (companyName || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  const map = [
+    { keys: ['marketing','agencia','agência','tráfego','trafego','social media','digital','midia','mídia','publicidade'],
+      desc: 'tráfego pago, criação de sites, gestão de redes sociais, produção de vídeos e conteúdo para o digital' },
+    { keys: ['video','vídeo','videomaker','produtora','filmagem','filme','cinema','audiovisual'],
+      desc: 'produção de vídeos profissionais para redes sociais, apresentações institucionais, campanhas e conteúdo digital' },
+    { keys: ['foto','fotografia','fotografo','fotógrafo','fotógrafa'],
+      desc: 'fotografia profissional, ensaios corporativos, produtos e conteúdo para redes sociais' },
+    { keys: ['design','grafico','gráfico','identidade visual','logo','marca','branding'],
+      desc: 'design gráfico, identidade visual, logotipos, peças para redes sociais e materiais de marketing' },
+    { keys: ['finance','financ','invest','contabil','contábil','contador','consultoria financeira','renda','mercado financeiro'],
+      desc: 'consultoria financeira, planejamento de investimentos, controle financeiro e estratégias para crescimento patrimonial' },
+    { keys: ['imob','imóvel','imovel','corret','aluguel','locação','construtora','incorporadora'],
+      desc: 'marketing imobiliário, captação de imóveis, anúncios de lançamentos e gestão da presença digital' },
+    { keys: ['saúde','saude','clinica','clínica','médico','medico','dentista','odonto','psico','fisio','nutri','estética','estetica'],
+      desc: 'marketing para saúde, captação de pacientes, gestão de reputação online e conteúdo de valor para a área' },
+    { keys: ['educação','educacao','escola','curso','treinamento','coach','mentor','professor','ensino'],
+      desc: 'marketing educacional, captação de alunos, produção de conteúdo e posicionamento de autoridade' },
+    { keys: ['tecnologia','tech','software','sistema','desenvolvimento','dev','ti','dados'],
+      desc: 'desenvolvimento de software, automação, sistemas web/mobile e transformação digital para empresas' },
+    { keys: ['advocacia','advocaçia','advogado','advogada','juridico','jurídico','direito'],
+      desc: 'marketing jurídico, posicionamento digital, captação de clientes e gestão de reputação online' },
+    { keys: ['varejo','loja','moda','roupa','produto','e-commerce','ecommerce','comercio','comércio'],
+      desc: 'marketing para varejo, gestão de redes sociais, campanhas de vendas e conteúdo para e-commerce' },
+  ];
+  for (const { keys, desc } of map) {
+    if (keys.some(k => n.includes(k))) return desc;
+  }
+  return 'serviços especializados que podem impulsionar os resultados de vocês no digital';
+}
+
+function openModal(id) {
+  const lead = allLeads.find(x => x.id === id) || savedLeads.find(x => x.id === id);
+  if (!lead) return;
+  const uName    = document.getElementById('userName').value.trim()    || '[SEU NOME]';
+  const uComp    = document.getElementById('userCompany').value.trim() || '[SUA EMPRESA]';
+  const uContext = detectUserCompanyContext(uComp);
+
+  mPhone = lead.phone || ''; mName = lead.name;
+  document.getElementById('modalLeadName').textContent = lead.name;
+
+  const pts = [];
+  if (!lead.hasIG)      pts.push('ainda não identificamos presença ativa no Instagram');
+  if (!lead.hasWebsite) pts.push('não encontramos um site profissional');
+  if (lead.rating && lead.rating < 3.5) pts.push('as avaliações online têm espaço para crescer');
+
+  const opportunity = pts.length
+    ? 'Percebi que ' + pts.join(' e ') + ', e isso pode estar limitando o alcance de vocês no digital.'
+    : 'Acredito que vocês têm um grande potencial de crescimento no digital.';
+
+  document.getElementById('msgText').value =
+    'Olá, tudo bem? 😊\n\n' +
+    'Meu nome é ' + uName + ', da ' + uComp + '. Trabalhamos com ' + uContext + '.\n\n' +
+    'Vi a ' + lead.name + (lead.city ? ' em ' + lead.city : '') + ' e fiquei com vontade de entrar em contato. ' + opportunity + '\n\n' +
+    'Acredito que posso ajudar vocês a atrair mais clientes e fortalecer a marca na região com estratégias personalizadas para o seu segmento.\n\n' +
+    'Posso preparar uma proposta sem compromisso. Topa uma conversa rápida de 10 minutos?\n\n' +
+    'Abraço! 🤝\n' + uName + ' | ' + uComp;
+
+  document.getElementById('msgModal').classList.add('open');
+}
+function closeModal() { document.getElementById('msgModal').classList.remove('open'); }
+function copyMsg() {
+  navigator.clipboard.writeText(document.getElementById('msgText').value).then(() => {
+    const b = document.getElementById('copyBtn'); b.textContent = '✅ Copiado!'; b.classList.add('done');
+    setTimeout(() => { b.textContent = '📋 Copiar'; b.classList.remove('done'); }, 2200);
+  });
+}
+function sendWA() {
+  const t = encodeURIComponent(document.getElementById('msgText').value);
+  if (mPhone) window.open('https://wa.me/55' + mPhone.replace(/\D/g,'') + '?text=' + t, '_blank');
+  else window.open('https://wa.me/?text=' + t, '_blank');
+}
+function openWA(phone) { window.open('https://wa.me/55' + phone.replace(/\D/g,''), '_blank'); }
+
+// ─── HELPERS ──────────────────────────────
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.className = 'toast ' + (type||'ok') + ' show'; clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), 3200);
+}
+function setLoading(on) {
+  document.getElementById('btnIcon').style.display = on ? 'none' : '';
+  document.getElementById('spinner').style.display  = on ? 'block' : 'none';
+  document.getElementById('btnText').textContent    = on ? 'BUSCANDO...' : 'BUSCAR LEADS';
+  document.getElementById('searchBtn').disabled = on;
+}
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+function e(s)  { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function ea(s) { return String(s||'').replace(/'/g,"\\'"); }
+
+// ─── INIT ─────────────────────────────────
+document.getElementById('msgModal').addEventListener('click', ev => {
+  if (ev.target === document.getElementById('msgModal')) closeModal();
+});
+document.addEventListener('keydown', ev => { if (ev.key === 'Escape') closeModal(); });
+const $un = document.getElementById('userName');
+const $uc = document.getElementById('userCompany');
+const _sn = localStorage.getItem('lfp_uname'); if (_sn) $un.value = _sn;
+const _sc = localStorage.getItem('lfp_ucomp'); if (_sc) $uc.value = _sc;
+$un.addEventListener('input', ev => localStorage.setItem('lfp_uname', ev.target.value));
+$uc.addEventListener('input', ev => localStorage.setItem('lfp_ucomp', ev.target.value));
+renderSaved();
+
+// Show local server banner
+if (!IS_LOCAL) {
+  const hint = document.getElementById('modeHint');
+  if (hint) hint.innerHTML = '⚠️ Abra via <code style="background:#1a1a2a;padding:1px 6px;border-radius:3px;font-size:10px">node server.js</code> para funcionar corretamente';
+}
+</script>
+</body>
+</html>
